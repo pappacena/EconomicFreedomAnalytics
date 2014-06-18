@@ -4,6 +4,7 @@ require(XLConnect)
 get_index_2014_data <- function() {
     index2014 <- readWorksheetFromFile(file.path("data/index2014_data.xls"), sheet=1)
     names(index2014) <- get_index_2014_headers()
+    index2014[index2014 == "N/A"] <- NA
     index2014
 }
 
