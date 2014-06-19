@@ -29,42 +29,54 @@ shinyUI(fluidPage(
             selectInput("countries",
                         "Compare Brazil to:",
                         choices=get_countries(),
-                        multiple=T),
+                        multiple=T,
+                        selected=c("Argentina", "Singapore", "Switzerland")),
             selectInput("indicators",
                         "Using this indicators",
                         choices=index_indicators,
                         multiple=F),
             
-            h3("2014 country wealth (GDP per capta)"),
+            h3("2014 country wealth (GDP per capita)"),
             helpText("Here, you can compare every country weath to it's other indicators"),
             selectInput("group_indicator",
                         "Using this indicator",
                         choices=group_indicators,
-                        multiple=F),
-            numericInput('groups', 'Groups', 5,
+                        multiple=F,
+                        selected="Business.Freedom"),
+            numericInput('groups', 'Groups (k-means)', 5,
                          min = 1, max = 9)
             ),
                
         
         # Show a plot of the generated distribution
         mainPanel(
+            h2("About this site"),
             helpText("This sites aims to analyse deeper aspects and correlations between data",
                      "gathered by The Heritage Foundation (http://www.heritage.org/)."),
-        helpText("All data can be found at http://www.heritage.org/index/explore."),
-        helpText("The site was consulted in 2014-06-17, and two datasets were downloaded: ",
-                 "2014 macroeconomic data and all index data between 1995 and 2014."),
-        
-        h1("Comparison"),
-        
-        showOutput("evolution", "morris"),
-        
-        hr(),
-        
-        h1("GDP Per capta - groups"),
-        tableOutput('countries_position'),
-        showOutput("groups_chart", "highcharts"),
-        h1("GDP Per capta - countries"),
-        showOutput("countries_chart", "highcharts")
+            helpText("All data can be found at http://www.heritage.org/index/explore."),
+            helpText("The site was consulted in 2014-06-17, and two datasets were downloaded: ",
+                     "2014 macroeconomic data and all index data between 1995 and 2014."),
+            
+            helpText("Using controls at the left, you can compare Brazil to other countries",
+                     "trought time, and it's actual status."),
+            
+            helpText("For the actual status, you can compare the per capita wealth with",
+                     "Heritage Foundation indexes, and see in which group of countries",
+                     " Brazil and other countries are."),
+            
+            h2("Evolution Comparison"),
+            
+            showOutput("evolution", "morris"),
+            
+            hr(),
+            
+            h2("2014 country wealth (GDP Per capita)"),
+            h3("Groups (k-means)"),
+            tableOutput('countries_position'),
+            showOutput("groups_chart", "highcharts"),
+            
+            h3("Countries"),
+            showOutput("countries_chart", "highcharts")
+        )
     )
-  )
 ))

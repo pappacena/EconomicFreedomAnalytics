@@ -24,7 +24,7 @@ get_index_2014_headers <- function() {
       "Property.Rights", "Change.In.Property.Rights.From.2013", 
       "Freedom.From.Corruption", "Change.In.Freedom.From.Corruption.From.2013", 
       "Fiscal.Freedom", "Change.In.Fiscal.Freedom.From.2013", "Gov.Spending", 
-      "Change.In.Gov.Spending.From.2013", "Business.Freemdom", 
+      "Change.In.Gov.Spending.From.2013", "Business.Freedom", 
       "Change.In.Business.Freedom.From.2013", "Labor.Freedom", 
       "Change.In.Labor.Freedom.From.2013", "Monetary.Freedom", 
       "Change.In.Monetary.Freedom.From.2013", "Trade.Freedom", 
