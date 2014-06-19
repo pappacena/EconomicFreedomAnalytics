@@ -2,7 +2,16 @@ require(XLConnect)
 
 
 get_index_2014_data <- function() {
-    index2014 <- readWorksheetFromFile(file.path("data/index2014_data.xls"), sheet=1)
+    csv_file <- "data/index2014_data.csv"
+    
+    # If there's no CSV file, convert it from the xls
+    # (we're experiencing some problems on reading the entire XLS file from ShinyApps)
+    if(!file.exists(csv_file)) {
+        index2014 <- readWorksheetFromFile(file.path("data/index2014_data.xls"), sheet=1)
+        write.csv(index2014, csv_file)
+    }
+    index2014 <- read.csv(csv_file, sep=",", na.strings="N/A")
+    index2014$X <- NULL
     names(index2014) <- get_index_2014_headers()
     index2014[index2014 == "N/A"] <- NA
     index2014
