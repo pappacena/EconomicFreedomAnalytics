@@ -41,7 +41,7 @@ shinyServer(function(input, output, session) {
         data
     })
     
-    output$groups_chart <- renderChart({
+    output$groups_chart <- renderChart2({
         data <- clustered_data()
 
         p <- hPlot(x="GDP.Per.Capta", y=input$group_indicator,
@@ -55,7 +55,7 @@ shinyServer(function(input, output, session) {
         return(p)
     })
     
-    output$countries_chart <- renderChart({
+    output$countries_chart <- renderChart2({
         data <- clustered_data()
         
         p <- hPlot(x="GDP.Per.Capta", y=input$group_indicator,
@@ -86,7 +86,7 @@ shinyServer(function(input, output, session) {
     # Evolution #
     #############
     
-    output$evolution <- renderChart({
+    output$evolution <- renderChart2({
         data <- get_all_index_series(c("Brazil", input$countries), input$indicators)
         data$Index.Year <- as.character(data$Index.Year)
         

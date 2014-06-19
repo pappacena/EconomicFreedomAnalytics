@@ -14,6 +14,7 @@ get_index_2014_data <- function() {
     index2014$X <- NULL
     names(index2014) <- get_index_2014_headers()
     index2014[index2014 == "N/A"] <- NA
+    index2014$Country.Name <- iconv(index2014$Country.Name, "latin1", "ASCII", "?")
     index2014
 }
 
@@ -46,6 +47,7 @@ get_all_index_data <- function() {
     d <- read.csv("data/all_index_data.csv")
     d[d == "N/A"] <- NA
     names(d) <- get_all_index_headers()
+    d$Name <- iconv(d$Name, "latin1", "ASCII", "?")
     d
 }
 
