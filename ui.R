@@ -76,7 +76,11 @@ shinyUI(fluidPage(
             showOutput("groups_chart", "highcharts"),
             
             h3("Countries"),
-            showOutput("countries_chart", "highcharts")
+            showOutput("countries_chart", "highcharts"),
+            helpText("Sorry for having so little information, but this site was done in",
+                     "a 1 day rush, as part of Developing Data Products course from",
+                     "Johns Hopkins University, on Coursera. :)"),
+            helpText("Thiago F. Pappacena")
         )
     )
 ))
